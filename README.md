@@ -462,7 +462,275 @@ The chatbot is designed to work on:
 ## Database
 
 * MongoDB Atlas
+---
+# Backend Deployment on Render
 
+## Step 1 — Push Project to GitHub
+
+Before deployment, push the latest frontend and backend code to GitHub.
+
+Commands:
+
+git add .
+
+git commit -m "deployment ready"
+
+git push origin main
+
+Outcome:
+
+* Source code is available online.
+* Render can access the repository.
+
+---
+
+## Step 2 — Create Render Account
+
+1. Visit https://render.com
+2. Sign in using GitHub.
+3. Authorize Render to access repositories.
+
+Outcome:
+
+* Render can read project code directly from GitHub.
+
+---
+
+## Step 3 — Create New Web Service
+
+1. Click New +.
+2. Select Web Service.
+3. Choose GitHub Repository.
+4. Select portfolio-chatbot repository.
+
+Outcome:
+
+* Render creates a deployment service for the backend.
+
+---
+
+## Step 4 — Configure Render Settings
+
+Fill the following values:
+
+Name:
+portfolio-chatbot
+
+Environment:
+Node
+
+Branch:
+main
+
+Root Directory:
+server
+
+Build Command:
+npm install
+
+Start Command:
+npm start
+
+Outcome:
+
+* Render knows where the backend code exists.
+* Render knows how to build and start the application.
+
+---
+
+## Step 5 — Configure Environment Variables
+
+Add the following variables:
+
+MONGO_URI=your_mongodb_connection_string
+
+PORT=10000
+
+Outcome:
+
+* Backend can connect to MongoDB Atlas.
+* Render can start the Express server.
+
+---
+
+## Step 6 — Deploy Application
+
+Click:
+
+Deploy Web Service
+
+Render automatically:
+
+* Clones repository
+* Installs dependencies
+* Builds application
+* Starts server
+
+Outcome:
+
+* Backend becomes available through a public URL.
+
+Example:
+
+https://portfolio-chatbot.onrender.com
+
+---
+
+## Step 7 — Verify Deployment
+
+Open:
+
+https://your-render-url.onrender.com
+
+Expected Response:
+
+Portfolio Chatbot Backend Running
+
+Outcome:
+
+* Server is successfully deployed.
+
+---
+
+## Step 8 — Verify API Route
+
+Open:
+
+https://your-render-url.onrender.com/api/chat
+
+Expected Response:
+
+Cannot GET /api/chat
+
+This is normal.
+
+Reason:
+
+* Browser sends GET request.
+* Backend route accepts POST request.
+
+Outcome:
+
+* API endpoint exists and is reachable.
+
+---
+
+## Step 9 — Check Deployment Logs
+
+Open:
+
+Render Dashboard
+→ Service
+→ Logs
+
+Verify:
+
+Server running on port 10000
+
+MongoDB Connected
+
+Outcome:
+
+* Express server is running.
+* MongoDB Atlas connection is successful.
+
+---
+
+## Step 10 — Connect Frontend with Live Backend
+
+Update chatApi.js
+
+Replace:
+
+http://localhost:5000/api/chat
+
+With:
+
+https://your-render-url.onrender.com/api/chat
+
+Outcome:
+
+* Frontend communicates with deployed backend.
+* Recruiter messages are processed through Render.
+
+---
+
+## Common Issues Faced During Deployment
+
+### MongoDB Connection Failed
+
+Error:
+
+MongooseServerSelectionError
+
+Reason:
+
+IP Address not whitelisted in MongoDB Atlas.
+
+Solution:
+
+Network Access
+→ Add IP Address
+
+Use:
+
+0.0.0.0/0
+
+Outcome:
+
+MongoDB becomes accessible from Render.
+
+---
+
+### Application Exited Early
+
+Reason:
+
+Missing start script.
+
+Solution:
+
+package.json
+
+"scripts": {
+"start": "node server.js"
+}
+
+Outcome:
+
+Render can start the application correctly.
+
+---
+
+### Cannot GET /
+
+Reason:
+
+Root route not created.
+
+Solution:
+
+app.get("/", (req, res) => {
+res.send("Portfolio Chatbot Backend Running");
+});
+
+Outcome:
+
+Deployment verification becomes easier.
+
+---
+
+## Final Result
+
+Successfully deployed:
+
+* Frontend Chatbot UI
+* Express Backend API
+* MongoDB Atlas Database
+* Render Cloud Hosting
+
+The chatbot is now publicly accessible and ready for recruiter interaction.
+---
 ---
 
 # 🔮 Future Improvements
