@@ -215,6 +215,55 @@ Example:
 ```txt
 mongodb+srv://username:password@cluster.mongodb.net/chatbotDB
 ```
+--------#Git & GitHub Project Setup
+
+• Initialized a local Git repository to start version control for the project.
+
+• Created a .gitignore file to exclude node_modules and environment files from source control.
+
+• Verified project status using Git commands before tracking files.
+
+• Added all project files to Git staging using git add.
+
+• Created the first project snapshot using Git commit.
+
+• Created a dedicated GitHub repository for the Portfolio Chatbot project.
+
+• Connected the local repository with the remote GitHub repository.
+
+• Pushed the complete frontend and backend source code to GitHub.
+
+• Verified repository structure and ensured all project files were successfully uploaded.
+
+Outcome:
+The project source code is now securely version-controlled and accessible from GitHub for collaboration, deployment, and future maintenance.
+---
+Backend Production Preparation
+Once the chatbot functionality was working successfully in the local environment, the backend application was reviewed and prepared for deployment to a production environment.
+
+The Express server configuration was verified to ensure it could accept requests from external frontend applications. CORS middleware was enabled to allow communication between the deployed frontend and backend services. JSON request parsing was configured so the API could correctly process recruiter messages sent from the chatbot interface.
+
+MongoDB Atlas was integrated as the cloud database solution, allowing recruiter interactions, chatbot replies, session information, and activity logs to be stored outside the local machine. Environment variables were used to securely manage database credentials and configuration values without exposing sensitive information in the source code.
+
+The application startup process was also updated for production deployment. A dedicated start script was added to package.json because cloud hosting platforms such as Railway require a production entry point to launch the server automatically. Development-only tools such as nodemon were separated from production dependencies to reduce unnecessary packages in the deployment environment.
+
+Why these changes were necessary:
+
+• Localhost configurations do not work in production environments.
+
+• Cloud platforms require a dedicated application startup process.
+
+• Sensitive credentials must remain protected through environment variables.
+
+• Database connectivity must be reliable and accessible from deployed services.
+
+• Frontend and backend applications need secure cross-origin communication.
+
+Outcome:
+
+The backend application is now structured according to production deployment standards and is ready to be hosted on a cloud platform while maintaining secure database connectivity and API communication.
+
+---
 
 ---
 
