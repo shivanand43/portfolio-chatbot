@@ -8,11 +8,17 @@ const connectDB = require("./config/db");
 connectDB();
 
 const app = express();
+
 const chatRoutes = require("./routes/chatRoutes");
+
 app.use(cors());
 app.use(express.json());
-app.use("/api/chat", chatRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Portfolio Chatbot Backend Running");
+});
+
+app.use("/api/chat", chatRoutes);
 
 const PORT = process.env.PORT || 5000;
 
