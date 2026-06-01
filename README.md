@@ -732,6 +732,98 @@ Successfully deployed:
 The chatbot is now publicly accessible and ready for recruiter interaction.
 ---
 ---
+# Frontend Deployment on Vercel
+
+## Step 1 — Push Latest Frontend Code
+
+Before deployment, push the latest project changes to GitHub.
+
+Commands:
+
+git add .
+
+git commit -m "frontend ready for deployment"
+
+git push origin main
+
+Outcome:
+
+* Latest frontend code becomes available on GitHub.
+
+---
+
+## Step 2 — Create Vercel Project
+
+1. Login to Vercel using GitHub.
+2. Click New Project.
+3. Select portfolio-chatbot repository.
+
+Outcome:
+
+* Vercel connects directly with the GitHub repository.
+
+---
+
+## Step 3 — Configure Project
+
+Application Preset:
+
+Other
+
+Root Directory:
+
+client
+
+Outcome:
+
+* Vercel deploys only the frontend files.
+
+---
+
+## Step 4 — Deploy Application
+
+Click Deploy.
+
+Vercel automatically:
+
+* Pulls source code from GitHub.
+* Builds the frontend.
+* Generates a public URL.
+
+Outcome:
+
+* Frontend becomes accessible from anywhere.
+
+---
+
+## Step 5 — Verify Deployment
+
+Open the generated Vercel URL.
+
+Test chatbot using:
+
+* Skills
+* Projects
+* Experience
+* Contact
+
+Outcome:
+
+* Frontend successfully communicates with the deployed backend API.
+
+---
+
+## Final Result
+
+Successfully deployed:
+
+* Frontend → Vercel
+* Backend → Render
+* Database → MongoDB Atlas
+
+The Portfolio Chatbot is now publicly accessible and can be used by recruiters, friends, and other users from any mobile, tablet, or desktop device through a single URL.
+---
+---
 
 # 🔮 Future Improvements
 
