@@ -215,7 +215,7 @@ Example:
 ```txt
 mongodb+srv://username:password@cluster.mongodb.net/chatbotDB
 ```
---------#Git & GitHub Project Setup
+<!-- --------#Git & GitHub Project Setup
 
 • Initialized a local Git repository to start version control for the project.
 
@@ -261,9 +261,8 @@ Why these changes were necessary:
 
 Outcome:
 
-The backend application is now structured according to production deployment standards and is ready to be hosted on a cloud platform while maintaining secure database connectivity and API communication.
+The backend application is now structured according to production deployment standards and is ready to be hosted on a cloud platform while maintaining secure database connectivity and API communication. -->
 
----
 
 ---
 
