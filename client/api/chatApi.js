@@ -3,7 +3,7 @@ import getSessionId from "../utils/session.js";
 export async function sendMessage(message) {
   try {
     const response = await fetch(
-  "http://localhost:5000/api/chat",
+  "https://portfolio-chatbot-1-rar6.onrender.com/api/chat",
   {
     method: "POST",
     headers: {
