@@ -256,7 +256,7 @@ answer:
   ],
   answer:
   // '📄 <a href="http://localhost:5000/resume/shivanand_patil_Resume.pdf" target="_blank">Download Resume</a>'
-  '📄 <a href="https://portfolio-chatbot-sandy.vercel.app/resume/shivanand_patil_Resume.pdf" target="_blank">Download Resume</a>'
+  '📄 <a href="https://portfolio-chatbot-1-rar6.onrender.com/resume/shivanand_patil_Resume.pdf" target="_blank">Download Resume</a>'
 
 }
 ];
