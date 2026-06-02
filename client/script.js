@@ -119,74 +119,83 @@ messageInput.addEventListener("keydown", (event) => {
 
 });
 
+let isSending = false;
 
-async function sendMessage(){
+async function sendMessage() {
+
   const message = messageInput.value.trim();
 
-  if(message === "") return;
+  if (message === "") return;
 
+  if (isSending) return;
 
-  // USER MESSAGE
+  isSending = true;
 
-  const userDiv =
-  document.createElement("div");
-
+  const userDiv = document.createElement("div");
   userDiv.classList.add("user-message");
-
   userDiv.innerText = message;
 
   chatMessages.appendChild(userDiv);
-messageInput.value = "";
 
-// TYPING MESSAGE
+  messageInput.value = "";
 
-const typingDiv =
-document.createElement("div");
-typingDiv.classList.add("bot-message");
-typingDiv.innerHTML = `
-  <div class="typing-animation">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-`;
+  const typingDiv = document.createElement("div");
 
-chatMessages.appendChild(typingDiv);
+  typingDiv.classList.add("bot-message");
 
-// AUTO SCROLL
+  typingDiv.innerHTML = `
+    <div class="typing-animation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  `;
 
-chatMessages.scrollTop =
-chatMessages.scrollHeight;
+  chatMessages.appendChild(typingDiv);
 
-
-
-// DELAY BOT RESPONSE
-
-setTimeout(async () => {
-
-  // REMOVE TYPING
-  typingDiv.remove();
-
-  // GET REPLY FROM BACKEND API
-  const botReply =
-  await sendApiMessage(message);
-
-  // CREATE BOT MESSAGE
-  const botDiv =
-  document.createElement("div");
-
-  botDiv.classList.add("bot-message");
-
-  botDiv.innerText = botReply;
-
-  chatMessages.appendChild(botDiv);
-
-  // AUTO SCROLL
   chatMessages.scrollTop =
   chatMessages.scrollHeight;
 
-}, 2000);}
+  try {
 
+    const botReply =
+    await sendApiMessage(message);
+
+    typingDiv.remove();
+
+    const botDiv =
+    document.createElement("div");
+
+    botDiv.classList.add("bot-message");
+
+    botDiv.innerText = botReply;
+
+    chatMessages.appendChild(botDiv);
+
+  } catch (error) {
+
+    console.error(error);
+
+    typingDiv.remove();
+
+    const errorDiv =
+    document.createElement("div");
+
+    errorDiv.classList.add("bot-message");
+
+    errorDiv.innerText =
+    "Something went wrong. Please try again.";
+
+    chatMessages.appendChild(errorDiv);
+
+  } finally {
+
+    isSending = false;
+
+    chatMessages.scrollTop =
+    chatMessages.scrollHeight;
+  }
+}
 
 
 /* QUICK BUTTON CLICK */
