@@ -168,7 +168,12 @@ async function sendMessage() {
 
     botDiv.classList.add("bot-message");
 
-    botDiv.innerText = botReply;
+    // botDiv.innerText = botReply;
+    if (botReply.includes("<a")) {
+  botDiv.innerHTML = botReply;
+} else {
+  botDiv.innerText = botReply;
+}
 
     chatMessages.appendChild(botDiv);
 

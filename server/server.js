@@ -13,7 +13,7 @@ const chatRoutes = require("./routes/chatRoutes");
 
 app.use(cors());
 app.use(express.json());
-
+app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.send("Portfolio Chatbot Backend Running");
 });

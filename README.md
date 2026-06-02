@@ -864,3 +864,33 @@ It is a practical full-stack learning project built to:
 * create an interactive recruiter experience
 
 ---
+---
+## Performance Issue Investigation & Fix
+
+### Problem
+
+The chatbot was taking 15–30 seconds to respond, causing users to think the application was not working correctly. The typing indicator also disappeared before the server response arrived, creating a poor user experience.
+
+### Investigation
+
+* Added response-time logging in the backend controller.
+* Monitored Render deployment logs.
+* Verified MongoDB connection and database operations.
+* Analyzed frontend API requests and message flow.
+
+### Findings
+
+Backend processing time was consistently below 500 ms, confirming that the application logic and database operations were performing efficiently. The primary delay was caused by Render free-tier cold starts and frontend UI behavior.
+
+### Solution
+
+* Kept the typing animation visible until the API response was received.
+* Prevented duplicate message submissions using an `isSending` flag.
+* Improved error handling and request flow.
+* Added backend performance logging for debugging and monitoring.
+
+### Result
+
+The chatbot now provides clear feedback to users while waiting for responses, prevents duplicate requests, and offers a smoother and more professional user experience.
+
+---
